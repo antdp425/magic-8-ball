@@ -30,6 +30,27 @@ p{
   height: auto;
 }
 
+#queryResult{
+  min-height: 20px;
+}
+
+#queryInput{
+  display: grid;
+  grid-template-rows: auto;
+}
+
+#query{
+  margin-bottom: 15px;
+}
+
+#getQuery{
+  margin-bottom: 15px;
+}
+
+#history button{
+  width: 100%;
+}
+
 button{
   /* add hover transition */
 }
