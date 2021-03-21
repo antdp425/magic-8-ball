@@ -5,12 +5,15 @@
 /* #fff */
 
 /* Color Scheme */
-/* #585858 */
-/* #f25f25 */
-/* #25b8f2 */
+/* Gray -- #585858 */
+/* Orange -- #f25f25 */
+/* Blue -- #25b8f2 */
+
+*{
+  font-family: 'Josefin Sans', sans-serif;
+}
 
 body{
-  font-family: 'Josefin Sans', sans-serif;
   color: #222;
   text-align: center;
 }
@@ -31,7 +34,7 @@ p{
 }
 
 #queryResult{
-  min-height: 20px;
+  padding: 5px;
 }
 
 #queryInput{
@@ -41,16 +44,22 @@ p{
 
 #query{
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
-#getQuery{
+#getResult{
   margin-bottom: 15px;
+  background-color: #25b8f2;
 }
 
 #history button{
   width: 100%;
+  background-color: #f25f25;
+  color: #fff
 }
 
-button{
+button, input[type=submit]{
+  padding: 5px;
+  font-size: 20px;
   /* add hover transition */
 }
