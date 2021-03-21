@@ -50,6 +50,8 @@ p{
 #getResult{
   margin-bottom: 15px;
   background-color: #25b8f2;
+  color: #fff;
+  width: 100%;
 }
 
 #history button{

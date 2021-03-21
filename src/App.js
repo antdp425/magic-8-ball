@@ -1,6 +1,23 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  // State
+  let [query, setQuery] = useState("");
+
+  let handleQueryInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  // Magic 8 Ball API
+  // let params = encodeURIComponent();
+  // let uri = "https://8ball.delegator.com/magic/JSON/" + params;
+  // fetch(uri)
+  //   .then((response) => response.json())
+  //   .then((json) => {
+  //     console.log(json);
+  //   });
+
   return (
     <div className="App">
       <h1>Magic 8-Ball</h1>
@@ -11,7 +28,12 @@ function App() {
       ></img>
       <p id="queryResult"></p>
       <form id="queryInput">
-        <input id="query" type="text"></input>
+        <input
+          onChange={handleQueryInputChange}
+          id="query"
+          type="text"
+          value={query}
+        ></input>
         <input id="getResult" type="submit" value="Ask"></input>
       </form>
       <div id="history">
