@@ -9,14 +9,22 @@ function App() {
     setQuery(event.target.value);
   };
 
-  // Magic 8 Ball API
-  // let params = encodeURIComponent();
-  // let uri = "https://8ball.delegator.com/magic/JSON/" + params;
-  // fetch(uri)
-  //   .then((response) => response.json())
-  //   .then((json) => {
-  //     console.log(json);
-  //   });
+  // Retrieving Query Result
+  let fetchQueryResult = (query) => {
+    let params = encodeURIComponent(query);
+    let uri = "https://8ball.delegator.com/magic/JSON/" + params;
+    fetch(uri)
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+      });
+  };
+
+  let handleQueryFormSubmission = (event) => {
+    event.preventDefault();
+    fetchQueryResult(query);
+  };
+  // ---------------------------------------
 
   return (
     <div className="App">
@@ -27,7 +35,7 @@ function App() {
         alt="Magic 8Ball"
       ></img>
       <p id="queryResult"></p>
-      <form id="queryInput">
+      <form onSubmit={handleQueryFormSubmission} id="queryInput">
         <input
           onChange={handleQueryInputChange}
           id="query"
