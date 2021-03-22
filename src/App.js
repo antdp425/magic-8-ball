@@ -16,7 +16,7 @@ function App() {
   let [loadingResult, setLoadingResult] = useState(false);
   let [result, setResult] = useState("");
 
-  // Histroy
+  // History
   let [resultHistory, setResultHistory] = useState([]);
   let [showHistoryDialog, setHistoryDiaglog] = useState(false);
   let openHistory = () => setHistoryDiaglog(true);
@@ -41,13 +41,16 @@ function App() {
 
   //// Handling Query Result
   let fetchQueryResult = (query) => {
+    // Setting to true to display loading animation
     setLoadingResult(true);
     let params = encodeURIComponent(query);
     let uri = "https://8ball.delegator.com/magic/JSON/" + params;
     fetch(uri)
       .then((response) => response.json())
       .then((json) => {
+        // Setting to false to stop loading animation
         setLoadingResult(false);
+        // Destructuring response for cleaner use
         let { question, answer } = json.magic;
         let result = { question, answer };
         setResult(answer);
@@ -67,7 +70,9 @@ function App() {
   let handleQueryFormSubmission = (event) => {
     event.preventDefault();
     setValidQuery(true);
+    // Ensuring that we can consistently get the last char, rather than an accidental blank from user
     let isValidQuery = query.trim().substr(-1) === "?";
+    // If query is valid -> fetch : otherwise trigger approriate error message
     return isValidQuery ? fetchQueryResult(query) : warnOfInvalidQuery();
   };
   // ---------------------------------------
@@ -101,7 +106,13 @@ function App() {
         <button onClick={openHistory}>Show History</button>
         <Dialog isOpen={showHistoryDialog} onDismiss={closeHistory}>
           <div className="historyResults">
-            {resultHistory.length === 0 ? "You haven't asked any questions yet 👀" : <h2>History</h2>}
+          {/* Logic to display appropriate header message in History Modal */}
+            {resultHistory.length === 0 ? (
+              "You haven't asked any questions yet 👀"
+            ) : (
+              <h2>History</h2>
+            )}
+            {/* Mapping through each history result and returning a History Item */}
             {resultHistory.map(({ answer, question }) => (
               <HistoryItem answer={answer} question={question} />
             ))}
