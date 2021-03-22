@@ -12,6 +12,20 @@ function App() {
   let [loadingResult, setLoadingResult] = useState(false);
   let [result, setResult] = useState("");
 
+  // Histroy
+  let [resultHistory, setResultHistory] = useState([]);
+
+  //// Handling Result History
+  let updateResultHistory = (result) => {
+    if (resultHistory.length < 10) {
+      setResultHistory((prevHistory) => [result, ...prevHistory]);
+    } else {
+      let prev = [...resultHistory];
+      prev.pop();
+      setResultHistory([result, ...prev]);
+    }
+  };
+
   //// Handling Query Input
   let handleQueryInputChange = (event) => {
     setQuery(event.target.value);
@@ -27,8 +41,10 @@ function App() {
       .then((response) => response.json())
       .then((json) => {
         setLoadingResult(false);
-        let { answer } = json.magic;
+        let { question, answer } = json.magic;
+        let result = { question, answer };
         setResult(answer);
+        updateResultHistory(result);
       });
   };
 

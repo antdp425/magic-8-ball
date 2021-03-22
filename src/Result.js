@@ -8,14 +8,14 @@ function Result({ loadingResult, validQuery, result }) {
     <p id="queryResult">{result}</p>
   ) : // If you aren't loading a result AND have an invalid query, display an error
   !loadingResult && !validQuery ? (
-    <p style={!validQuery && { color: "red" }} id="queryResult">
+    <p style={{ color: "red" }} id="queryResult">
       {result}
     </p>
   ) : (
     //  Otherwise, display Loader
-    <p id="queryResult">
-      <Loader type="ThreeDots" color="#585858" height={15} width={80} />
-    </p>
+      <p id="queryResult">
+        <Loader type="ThreeDots" color="#585858" height={15} width={80} />
+      </p>
   );
 }
 
