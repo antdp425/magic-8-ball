@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Result from "./Result";
 
 function App() {
   // State
@@ -47,14 +48,8 @@ function App() {
         alt="Magic 8Ball"
       ></img>
 
-      {validQuery ? (
-        <p id="queryResult">{result}</p>
-      ) : (
-        <p style={!validQuery && { color: "red" }} id="queryResult">
-          {result}
-        </p>
-      )}
-      
+      <Result validQuery={validQuery} result={result} />
+
       <form onSubmit={handleQueryFormSubmission} id="queryInput">
         <input
           onChange={handleQueryInputChange}
