@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
 /* Text Colors */
 /* #222 */
@@ -9,78 +9,143 @@
 /* Orange -- #f25f25 */
 /* Blue -- #25b8f2 */
 
-*{
-  font-family: 'Josefin Sans', sans-serif;
+* {
+  font-family: "Josefin Sans", sans-serif;
 }
 
-body{
+body {
   color: #222;
   text-align: center;
 }
 
-h1{
+h1 {
   font-size: 60px;
 }
 
-p{
+p {
   font-size: 20px;
 }
 
-.main8BallImage{
+.main8BallImage {
   width: 100%;
-  max-width: 100%;
-  max-width: 100%;
-  height: auto;
+  max-width: 50%;
+  max-height: 100%;
 }
 
-#queryResult{
+#queryResult {
   padding: 5px;
 }
 
-#queryInput{
+#queryInput {
   display: grid;
   grid-template-rows: auto;
 }
 
-#query{
+#query {
   margin-bottom: 15px;
   font-size: 20px;
+  text-align: center;
 }
 
-#getResult{
+#getResult {
   margin-bottom: 15px;
   background-color: #25b8f2;
   color: #fff;
   width: 100%;
+  transition-duration: 0.4s;
 }
 
-#history button{
+#history button {
   width: 100%;
   background-color: #f25f25;
-  color: #fff
+  color: #fff;
+  transition-duration: 0.4s;
 }
 
-button, input[type=submit]{
+#history button:hover {
+  background-color: #fff;
+  color: #f25f25;
+}
+
+button,
+input[type="submit"] {
   padding: 5px;
   font-size: 20px;
-  /* add hover transition */
 }
 
-.historyResults{
+#getResult:hover {
+  background-color: #fff;
+  color: #25b8f2;
+}
+
+.historyResults {
   padding-bottom: 15px;
 }
 
-.historyItem{
+.historyItem {
   display: grid;
   grid-template-rows: auto;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.historyItem .question{
+.historyItem .question {
   margin: 0%;
 }
 
-.historyItem .answer{
+.historyItem .answer {
   font-style: italic;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  /* CSS */
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
 }

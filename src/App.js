@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import Result from "./Result";
-
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
+
+import Result from "./Result";
 import HistoryItem from "./HistoryItem";
 
 function App() {
