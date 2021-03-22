@@ -3,24 +3,30 @@ import "./App.css";
 import Result from "./Result";
 
 function App() {
-  // State
+  //// State
+  // Query
   let [query, setQuery] = useState("");
   let [validQuery, setValidQuery] = useState(false);
+
+  // Result
+  let [loadingResult, setLoadingResult] = useState(false);
   let [result, setResult] = useState("");
 
-  // Handling Query Input
+  //// Handling Query Input
   let handleQueryInputChange = (event) => {
     setQuery(event.target.value);
   };
   // ---------------------------------------
 
-  // Retrieving Query Result
+  //// Handling Query Result
   let fetchQueryResult = (query) => {
+    setLoadingResult(true);
     let params = encodeURIComponent(query);
     let uri = "https://8ball.delegator.com/magic/JSON/" + params;
     fetch(uri)
       .then((response) => response.json())
       .then((json) => {
+        setLoadingResult(false);
         let { answer } = json.magic;
         setResult(answer);
       });
@@ -48,7 +54,11 @@ function App() {
         alt="Magic 8Ball"
       ></img>
 
-      <Result validQuery={validQuery} result={result} />
+      <Result
+        loadingResult={loadingResult}
+        validQuery={validQuery}
+        result={result}
+      />
 
       <form onSubmit={handleQueryFormSubmission} id="queryInput">
         <input
