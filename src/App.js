@@ -34,14 +34,18 @@ function App() {
 
   let warnOfInvalidQuery = () => {
     setValidQuery(false);
-    setResult(`Invalid Question -- be sure to end your question with a "?"`);
+    return !!query
+      ? setResult(`Be sure to end your question with a "?"`)
+      : setResult(
+          `Please enter a question -- be sure to include a "?" at the end`
+        );
   };
 
   let handleQueryFormSubmission = (event) => {
     event.preventDefault();
     setValidQuery(true);
-    let endsInQuestionMark = query.trim().substr(-1) === "?";
-    return endsInQuestionMark ? fetchQueryResult(query) : warnOfInvalidQuery();
+    let isValidQuery = query.trim().substr(-1) === "?";
+    return isValidQuery ? fetchQueryResult(query) : warnOfInvalidQuery();
   };
   // ---------------------------------------
 
