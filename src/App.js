@@ -2,6 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import Result from "./Result";
 
+import { Dialog } from "@reach/dialog";
+import "@reach/dialog/styles.css";
+import HistoryItem from "./HistoryItem";
+
 function App() {
   //// State
   // Query
@@ -14,6 +18,9 @@ function App() {
 
   // Histroy
   let [resultHistory, setResultHistory] = useState([]);
+  let [showHistoryDialog, setHistoryDiaglog] = useState(false);
+  let openHistory = () => setHistoryDiaglog(true);
+  let closeHistory = () => setHistoryDiaglog(false);
 
   //// Handling Result History
   let updateResultHistory = (result) => {
@@ -90,7 +97,17 @@ function App() {
         <input id="getResult" type="submit" value="Ask"></input>
       </form>
       <div id="history">
-        <button>Show History</button>
+        <button onClick={openHistory}>Show History</button>
+        <Dialog isOpen={showHistoryDialog} onDismiss={closeHistory}>
+          <div className="historyResults">
+            {resultHistory.map(({ answer, question }) => (
+              <HistoryItem answer={answer} question={question} />
+            ))}
+          </div>
+          <button className="close-button" onClick={closeHistory}>
+            <span aria-hidden>Close</span>
+          </button>
+        </Dialog>
       </div>
     </div>
   );

@@ -65,3 +65,22 @@ button, input[type=submit]{
   font-size: 20px;
   /* add hover transition */
 }
+
+.historyResults{
+  padding-bottom: 15px;
+}
+
+.historyItem{
+  display: grid;
+  grid-template-rows: auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.historyItem .question{
+  margin: 0%;
+}
+
+.historyItem .answer{
+  font-style: italic;
+}
