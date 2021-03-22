@@ -92,6 +92,7 @@ function App() {
           onChange={handleQueryInputChange}
           id="query"
           type="text"
+          placeholder="Type Your Question Here"
           value={query}
         ></input>
         <input id="getResult" type="submit" value="Ask"></input>
@@ -100,6 +101,7 @@ function App() {
         <button onClick={openHistory}>Show History</button>
         <Dialog isOpen={showHistoryDialog} onDismiss={closeHistory}>
           <div className="historyResults">
+            {resultHistory.length === 0 ? "You haven't asked any questions yet 👀" : <h2>History</h2>}
             {resultHistory.map(({ answer, question }) => (
               <HistoryItem answer={answer} question={question} />
             ))}
