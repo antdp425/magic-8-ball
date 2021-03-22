@@ -4,10 +4,13 @@ import "./App.css";
 function App() {
   // State
   let [query, setQuery] = useState("");
+  let [result, setResult] = useState("");
 
+  // Handling Query Input
   let handleQueryInputChange = (event) => {
     setQuery(event.target.value);
   };
+  // ---------------------------------------
 
   // Retrieving Query Result
   let fetchQueryResult = (query) => {
@@ -16,7 +19,8 @@ function App() {
     fetch(uri)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+        let { answer } = json.magic;
+        setResult(answer);
       });
   };
 
@@ -34,7 +38,7 @@ function App() {
         src="./magic8ball.jpeg"
         alt="Magic 8Ball"
       ></img>
-      <p id="queryResult"></p>
+      <p id="queryResult">{result}</p>
       <form onSubmit={handleQueryFormSubmission} id="queryInput">
         <input
           onChange={handleQueryInputChange}
