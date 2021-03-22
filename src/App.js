@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   // State
   let [query, setQuery] = useState("");
+  let [validQuery, setValidQuery] = useState(false);
   let [result, setResult] = useState("");
 
   // Handling Query Input
@@ -24,9 +25,16 @@ function App() {
       });
   };
 
+  let warnOfInvalidQuery = () => {
+    setValidQuery(false);
+    setResult(`Invalid Question -- be sure to end your question with a "?"`);
+  };
+
   let handleQueryFormSubmission = (event) => {
     event.preventDefault();
-    fetchQueryResult(query);
+    setValidQuery(true);
+    let endsInQuestionMark = query.trim().substr(-1) === "?";
+    return endsInQuestionMark ? fetchQueryResult(query) : warnOfInvalidQuery();
   };
   // ---------------------------------------
 
@@ -38,7 +46,15 @@ function App() {
         src="./magic8ball.jpeg"
         alt="Magic 8Ball"
       ></img>
-      <p id="queryResult">{result}</p>
+
+      {validQuery ? (
+        <p id="queryResult">{result}</p>
+      ) : (
+        <p style={!validQuery && { color: "red" }} id="queryResult">
+          {result}
+        </p>
+      )}
+      
       <form onSubmit={handleQueryFormSubmission} id="queryInput">
         <input
           onChange={handleQueryInputChange}
